@@ -9,7 +9,7 @@ public class Main extends JavaPlugin {
 	
 	@Getter(value=AccessLevel.PUBLIC)
 	private static Main instance;
-	@Getter(value=AccessLevel.PUBLIC)
+	@Getter(value = AccessLevel.PUBLIC)
 	private static API api;
 	
 	@Override
@@ -22,6 +22,8 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		// TODO Auto-generated method stub
 		super.onEnable();
+		
+		// -- Instances --
 		
 		instance = this;
 		api = new API();
