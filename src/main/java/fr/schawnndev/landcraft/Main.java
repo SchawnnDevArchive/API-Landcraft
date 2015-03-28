@@ -5,28 +5,31 @@ import lombok.Getter;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.schawnndev.landcraft.datas.SQL;
+
 public class Main extends JavaPlugin {
-	
-	@Getter(value=AccessLevel.PUBLIC)
+
+	@Getter(value = AccessLevel.PUBLIC)
 	private static Main instance;
 	@Getter(value = AccessLevel.PUBLIC)
 	private static API api;
-	
-	@Override
+	@Getter(value = AccessLevel.PRIVATE)
+	private static SQL sql;
+
 	public void onDisable() {
-		// TODO Auto-generated method stub
-		super.onDisable();
 	}
-	
-	@Override
+
 	public void onEnable() {
-		// TODO Auto-generated method stub
-		super.onEnable();
-		
+
 		// -- Instances --
-		
+
 		instance = this;
 		api = new API();
+
+		// -- MySQL --
+
+		sql = new SQL("localhost", "", "", "");
+
 	}
 
 }
