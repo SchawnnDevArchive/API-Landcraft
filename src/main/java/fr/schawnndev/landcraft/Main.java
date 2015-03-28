@@ -6,6 +6,8 @@ import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.schawnndev.landcraft.datas.SQL;
+import fr.schawnndev.landcraft.datas.SQLManager;
+import fr.schawnndev.landcraft.ranks.RankManager;
 
 public class Main extends JavaPlugin {
 
@@ -13,11 +15,11 @@ public class Main extends JavaPlugin {
 	private static Main instance;
 	@Getter(value = AccessLevel.PUBLIC)
 	private static API api;
-	@Getter(value = AccessLevel.PRIVATE)
+	@Getter(value = AccessLevel.PUBLIC)
 	private static SQL sql;
-
-	public void onDisable() {
-	}
+	private static SQLManager sqlManager;
+	@Getter(value = AccessLevel.PUBLIC)
+	private static String serverName;
 
 	public void onEnable() {
 
@@ -29,7 +31,22 @@ public class Main extends JavaPlugin {
 		// -- MySQL --
 
 		sql = new SQL("localhost", "", "", "");
+		
+		sqlManager = new SQLManager();
+		sqlManager.refreshConnection();
+		
+		// -- Ranks --
+		
+		RankManager.init();
+		
+		// -- Vars --
+		
+		serverName = "pvp"; // TODO: Config file
 
+	}
+
+	public void onDisable() {
+		sqlManager.stopConnection();
 	}
 
 }
