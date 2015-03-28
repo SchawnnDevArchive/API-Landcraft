@@ -1,6 +1,7 @@
 package fr.schawnndev.landcraft.ranks;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class RankManager {
@@ -12,8 +13,10 @@ public class RankManager {
 			ranks.add(new Rank(s, 1, "", ""));
 	}
 	
-	public static Rank getRank(UUID uuid, String server){
-		return new Rank("VIP", 1, "vip", "[VIP]");
+	public static List<Rank> getRank(UUID uuid, String server) {
+		ArrayList<Rank> rank = new ArrayList<Rank>();
+		rank.add(new Rank("VIP", 1, "vip", "[VIP]"));
+		return rank;
 	}
 	
 	public static void setRank(Rank rank, String server, UUID uuid, int time){

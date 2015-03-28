@@ -1,5 +1,7 @@
 package fr.schawnndev.landcraft.users;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -14,12 +16,12 @@ public class User {
 	@Getter
 	private String name;
 	@Getter
-	private Rank rank;
+	private List<Rank> ranks = new ArrayList<Rank>();
 	
 	public User(String name, String uuid) {
 		this.uuid = UUID.fromString(uuid);
 		this.name = name;
-		rank = RankManager.getRank(this.uuid, Main.getServerName());
+		ranks = RankManager.getRank(this.uuid, Main.getServerName());
 	}
 	
 	
