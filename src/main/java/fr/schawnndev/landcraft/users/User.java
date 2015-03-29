@@ -21,7 +21,7 @@ public class User {
 	public User(String name, String uuid) {
 		this.uuid = UUID.fromString(uuid);
 		this.name = name;
-		ranks = RankManager.getRank(this.uuid, Main.getServerName());
+		ranks = RankManager.getRanks(this.uuid, Main.getCurrentServer());
 	}
 	
 	

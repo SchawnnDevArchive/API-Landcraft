@@ -5,13 +5,13 @@ import lombok.Getter;
 public class Rank {
 
 	@Getter
-	String name;
+	private String name;
 	@Getter
-	int id;
+	private int id;
 	@Getter
-	String pex_name;
+	private String pex_name;
 	@Getter
-	String prefix;
+	private String prefix;
 
 	public Rank(String name, int id, String pex_name, String prefix) {
 		this.name = name;
